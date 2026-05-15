@@ -1,0 +1,127 @@
+/* Admin Core Design System */
+:root {
+  --primary: #6366f1;
+  --secondary: #4f46e5;
+  --accent: #8b5cf6;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --danger: #ef4444;
+  --success: #10b981;
+}
+
+[data-theme="dark"] {
+  --background: #0b0e14;
+  --surface: #161920;
+  --glass: rgba(22, 25, 32, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism primitives */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Input Groups & Wrappers */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 14px;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.input-wrapper .glass-input {
+  padding-left: 44px !important;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Sidebar expansion transition */
+#mainSidebar {
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-text, .user-details-mini, .sidebar-header {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Navigation items active state */
+.nav-link.active {
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), transparent);
+  color: #60a5fa;
+}
+
+/* Responsive Hide Sidebar */
+@media (max-width: 1024px) {
+  #mainSidebar {
+    transform: translateX(-100%);
+  }
+  body.sidebar-open #mainSidebar {
+    transform: translateX(0);
+  }
+}

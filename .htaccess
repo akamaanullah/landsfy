@@ -1,0 +1,42 @@
+Options -MultiViews
+RewriteEngine On
+
+# Set RewriteBase to the current subfolder for local XAMPP environment
+RewriteBase /landsfy.com/
+
+# Sitemap Rewrite
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# 1. Detail Pages SEO Friendly URLs
+# Priority rules for properties, agencies, agents, and blog
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^properties/([^/]+)/?$ property-detail.php?slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^agencies/([^/]+)/?$ agency-detail.php?slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^agents/([^/]+)/?$ agent-detail.php?slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blog/([^/]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+
+# 2. Hide .php extension for general pages
+# Example: landsfy.com/about -> about.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\/]+)/?$ $1.php [L]
+
+# 3. Direct access to listing pages without .php
+RewriteRule ^properties/?$ properties.php [L]
+RewriteRule ^agencies/?$ agencies.php [L]
+RewriteRule ^agents/?$ agents.php [L]
+RewriteRule ^blog/?$ blog.php [L]
+
+# 4. Canonical Redirects
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ ./ [R=301,L]

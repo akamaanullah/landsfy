@@ -1,0 +1,13 @@
+{
+    "name": "landsfy/platform",
+    "description": "Landsfy Real Estate Platform",
+    "require": {
+        "google/apiclient": "2.15",
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "config": {
+        "audit": {
+            "ignore": ["PKSA-y2cr-5h3j-g3ys"]
+        }
+    }
+}

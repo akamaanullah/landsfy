@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+uploads/
+.env
+.DS_Store
+*.log
+error_log
+xampp/
+phpMyAdmin/
+tmp/
+.vscode/
+.idea/
